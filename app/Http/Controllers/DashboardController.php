@@ -88,23 +88,22 @@ class DashboardController extends Controller
         $beneficesomme = $sommeacte-$sommedepense;
         $beneficebudget = $sommebudget-$sommebudgetdepense;
         $benefice = ($totalrealisationdepense*100)/$totalrealisation;
-        // if($benefice < -100)
-        // {
-        //     $benefice = $benefice - 100;
-        // }
-        // else{
-        //     $benefice = $benefice;
-        // }
-        // if($benefice > 100)
-        // {
-        //     $benefice = 100;
-        // }
-        // else{
-        //     $benefice = $benefice;
-        // }
+
+        // if($beneficesomme < 0){
+        //     $beneficesomme = 1;
+        // }else{$beneficesomme;}
+
+        if($benefice > 100)
+        {
+            $benefice = 100;
+        }
+        else{
+            $benefice = $benefice;
+        }
         if(($beneficesomme <0) || ($beneficebudget<=0)){
             $benefice = 0;
         }
+        
 
         return view('admin.dashboard.index', compact(
             'recettes', 

@@ -16,8 +16,9 @@ class ChargeController extends Controller
     {
         $depenses = Depense::all();
         $charges = Charge::all();
-        $type_charges = DB::table('v_type_charge')->paginate(5);
-        return view('other.charges.index', compact('depenses', 'charges', 'type_charges'));
+        $type_charges = DB::table('v_saisie_depense')->paginate(5);
+        // $type_charges = DB::table('v_type_charge')->paginate(5);
+        return view('other.charges.index', compact('depenses', 'type_charges'));
     }
 
     /**

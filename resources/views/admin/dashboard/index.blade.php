@@ -1,12 +1,21 @@
 @extends('admin.layouts.app')
 @section('content')
     <div class="container">
+        <h1>Dashboard</h1>
         <form action="{{ route('tableau') }}" enctype="multipart/form-data" method="post">
             @csrf
             @method('get')
-            <input type="number" name="mois" placeholder="mois">
-            <input type="number" name="annee" placeholder="annee">
-            <input type="submit" value="Filter">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        Mois :<input class="form-control" type="number" name="mois" placeholder="mois">
+                    </div>
+                    <div class="col">
+                        Annee :<input class="form-control" type="number" name="annee" placeholder="annee"><br/>
+                    </div>
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Filter">
         </form>
         <h1>Recette - Depense - Benefice</h1>
             <div class="row">

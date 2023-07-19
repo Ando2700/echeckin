@@ -21,6 +21,7 @@ class DetailFactureController extends Controller
     public function saisieDetailFacture(Request $request, string $id){
         $factures = Facture::findOrFail($id);
         $actes = Acte::all();
+        
         // $patients = DB::table('factures')
         // ->join('patients', 'factures.patient_id', '=', 'patients.id')
         // ->select('patients.nom')

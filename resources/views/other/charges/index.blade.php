@@ -1,5 +1,8 @@
 @extends('other.layouts.app')
 @section('content')
+<?php 
+    use Carbon\carbon;
+?>
     <h1>Charge:</h1>
     <p>Ajouter des depenses : </p>
     <form action="{{ route('charges.store') }}" method="POST" enctype="multipart/form-data">
@@ -31,20 +34,20 @@
                 <div class="row">
                     <label for="mois">Mois:</label><br>
                     <div class="col">
-                        <input type="checkbox" name="mois[]" value="01"> Janvier<br>
-                        <input type="checkbox" name="mois[]" value="02"> Février<br>
-                        <input type="checkbox" name="mois[]" value="03"> Mars<br>
-                        <input type="checkbox" name="mois[]" value="04"> Avril<br>
-                        <input type="checkbox" name="mois[]" value="05"> Mai<br>
-                        <input type="checkbox" name="mois[]" value="06"> Juin<br>
+                        <input type="checkbox" name="mois[]" value="01"> January<br>
+                        <input type="checkbox" name="mois[]" value="02"> February<br>
+                        <input type="checkbox" name="mois[]" value="03"> March<br>
+                        <input type="checkbox" name="mois[]" value="04"> April<br>
+                        <input type="checkbox" name="mois[]" value="05"> May<br>
+                        <input type="checkbox" name="mois[]" value="06"> June<br>
                     </div>
                     <div class="col">
-                        <input type="checkbox" name="mois[]" value="07"> Juillet<br>
-                        <input type="checkbox" name="mois[]" value="08"> Aout<br>
-                        <input type="checkbox" name="mois[]" value="09"> Septmebre<br>
-                        <input type="checkbox" name="mois[]" value="10"> Octobre<br>
-                        <input type="checkbox" name="mois[]" value="11"> Novembre<br>
-                        <input type="checkbox" name="mois[]" value="12"> Decembre<br>    
+                        <input type="checkbox" name="mois[]" value="07"> July<br>
+                        <input type="checkbox" name="mois[]" value="08"> August<br>
+                        <input type="checkbox" name="mois[]" value="09"> Septmeber<br>
+                        <input type="checkbox" name="mois[]" value="10"> October<br>
+                        <input type="checkbox" name="mois[]" value="11"> November<br>
+                        <input type="checkbox" name="mois[]" value="12"> December<br>    
                     </div>
                 </div>
             </div>
@@ -70,7 +73,7 @@
                 @foreach ($type_charges as $type_charge)
                 <tr>
                     <td>{{ $type_charge->type_depense }}</td>
-                    <td>{{ $type_charge->jour }}/{{ $type_charge->mois }}/{{ $type_charge->annee }}</td>
+                    <td>{{ Carbon::parse($type_charge->date)->format('d F Y') }}</td>
                     <td>{{ $type_charge->montant_depense }}</td>
                 </tr>    
                 @endforeach
