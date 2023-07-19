@@ -24,14 +24,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($recettes as $recette)
-                                        <tr>
-                                            <td>{{ $recette->type_acte }}</td>
-                                            <td>{{ $recette->montant_total }}</td>
-                                            <td>{{ $recette->budget }}</td>
-                                            <td>{{ $recette->realisation }} % </td>
-                                        </tr>
-                                    @endforeach
+                                    @forelse ($recettes as $recette)
+                                    <tr>
+                                        <td>{{ $recette->type_acte }}</td>
+                                        <td>{{ $recette->montant_total }}</td>
+                                        <td>{{ $recette->budget }}</td>
+                                        <td>{{ $recette->realisation }} % </td>
+                                    </tr>
+                                    @empty
+                                        Recette vide.
+                                    @endforelse
 
                                     <tr>
                                         <td></td>
@@ -58,14 +60,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($depenses as $depense)
-                                        <tr>
-                                            <td>{{ $depense->type_depense }}</td>
-                                            <td>{{ $depense->montant_total }}</td>
-                                            <td>{{ $depense->budget }}</td>
-                                            <td>{{ $depense->realisation }} % </td>
-                                        </tr>
-                                    @endforeach
+                                    @forelse ($depenses as $depense)
+                                    <tr>
+                                        <td>{{ $depense->type_depense }}</td>
+                                        <td>{{ $depense->montant_total }}</td>
+                                        <td>{{ $depense->budget }}</td>
+                                        <td>{{ $depense->realisation }} % </td>
+                                    </tr>
+                                    @empty
+                                        Requette vide.
+                                    @endforelse
 
                                     <tr>
                                         <td></td>
