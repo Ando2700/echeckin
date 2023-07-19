@@ -1,5 +1,8 @@
 @extends('other.layouts.app')
 @section('content')
+<?php 
+    use Carbon\carbon;
+?>
 <h2>Voici la liste des patients : </h2>
 <table class="table">
     <thead>
@@ -15,7 +18,7 @@
         @foreach ($patients as $patient)
         <tr>
             <td>{{ $patient->nom }}</td>
-            <td>{{ $patient->date_naissance }}</td>
+                    <td>{{ Carbon::parse($patient->date_naissance)->format('d F Y') }}</td>
             <td>@if ($patient->remboursement==1)
                 true
             @else

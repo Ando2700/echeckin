@@ -55,6 +55,8 @@ select c.montant_depense, c.date, d.type_depense, d.reference, d.budget, d.annee
 from v_charge c inner join 
 depenses d on c.depense_id = d.id; 
 
+select*from sum(d.montant_total) as montant_depense, sum(r.montant_total) as montant_recette, r.mois, r.annee v_depense d left join v_recette r on  r.mois = d.mois;
+
 -- DEPENSE ok
 CREATE OR REPLACE VIEW v_depense AS
 SELECT

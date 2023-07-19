@@ -1,5 +1,8 @@
 @extends('other.layouts.app')
 @section('content')
+<?php
+use Carbon\carbon;
+?>
     <h2>Facture № {{ $factures->id }}</h2>
     <form action="{{ route('savedetailfacture') }}" method="POST" enctype="multipart/form-data">
         {{-- <form action="{{ route('savedetailfacture') }}" method="POST" enctype="multipart/form-data"> --}}
@@ -50,7 +53,7 @@
     <button class="btn btn-outline-primary" onclick="exportToPDF()">Exporter PDF</button>
     <div id="invoice">
         <h2>Detail facture :</h2>
-        <p>Facture du : <strong>{{ $factures->date_facture }}</strong></p>
+                    <p>Facture du : <strong>{{ Carbon::parse($factures->date_facture)->format('d F Y') }}</strong></p>
         <table class="table">
             <thead>
                 <tr>

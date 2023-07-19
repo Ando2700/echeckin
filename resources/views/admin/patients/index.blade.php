@@ -1,5 +1,8 @@
 @extends('admin.layouts.app')
 @section('content')
+<?php 
+    use Carbon\carbon;
+?>
 <h2>Creation de patient(e): </h2>
     <form action="{{ route('patients.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -62,7 +65,7 @@
                 @foreach ($patients as $patient)
                 <tr>
                     <td>{{ $patient->nom }}</td>
-                    <td>{{ $patient->date_naissance }}</td>
+                    <td>{{ Carbon::parse($patient->date_naissance)->format('d F Y') }}</td>
                     <td>@if ($patient->remboursement==1)
                         true
                     @else

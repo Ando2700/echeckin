@@ -24,6 +24,9 @@
 </head>
 
 <body class="sb-nav-fixed">
+    <?php
+    use Carbon\carbon;
+    ?>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="{{ route('admin.index') }}">Title here</a>

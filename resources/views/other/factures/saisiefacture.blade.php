@@ -1,5 +1,8 @@
 @extends('other.layouts.app')
 @section('content')
+<?php 
+    use Carbon\carbon;
+?>
     <h2>Saisie de facture {{ $patients->nom }} </h2>
     <form action="{{ route('savefacture') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -40,7 +43,7 @@
                 @foreach ($factures as $facture)
                 <tr>
                     <td>{{ $facture->patient_id }}</td>
-                    <td>{{ $facture->date_facture }}</td>
+                    <td>{{ Carbon::parse($facture->date_facture)->format('d F Y') }}</td>
                     <td><a href="{{ route('saisiedetailfacture', ['id' => $facture->id]) }}" class="btn btn-sm btn-primary">Voir detail</a></td>
                 </tr>    
                 @endforeach
