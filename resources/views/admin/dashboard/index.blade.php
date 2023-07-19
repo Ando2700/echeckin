@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <h1>Dashboard</h1>
-        <form action="{{ route('tableau') }}" enctype="multipart/form-data" method="post">
+        <form action="{{ route('dashboard.tableau') }}" enctype="multipart/form-data" method="post">
             @csrf
             @method('get')
             <div class="col">

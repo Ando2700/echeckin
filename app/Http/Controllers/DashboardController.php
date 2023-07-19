@@ -13,102 +13,100 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        $mois = $request->mois;
-        $annee = $request->annee;
-        $recettes = DB::table('v_recette')
-        ->select('*')
-        ->where('mois', '=', $mois)
-        ->where('annee', '=', $annee)->get();
-        $sommeacte = DB::table('v_recette')->sum('montant_total');
-        $sommebudget = DB::table('v_recette')->sum('budget');
-        $totalrealisation = ($sommeacte*100)/$sommebudget; 
-        
-        $depenses = DB::table('v_depense')->get();
-        $sommedepense = DB::table('v_depense')->sum('montant_total');
-        $sommebudgetdepense = DB::table('v_depense')->sum('budget');
-        $totalrealisationdepense = ($sommedepense*100)/$sommebudgetdepense;
+        // $mois = $request->mois;
+        // $annee = $request->annee;
+        // $recettes = DB::table('v_recette')
+        // ->select('*')
+        // ->where('mois', '=', $mois)
+        // ->where('annee', '=', $annee)->get();
+        // $sommeacte = DB::table('v_recette')->sum('montant_total');
+        // $sommebudget = DB::table('v_recette')->sum('budget');
+        // $totalrealisation = ($sommeacte*100)/$sommebudget; 
 
-        $beneficesomme = $sommeacte-$sommedepense;
-        $beneficebudget = $sommebudget-$sommebudgetdepense;
-        $benefice = ($totalrealisationdepense*100)/$totalrealisation;
-        return view('admin.dashboard.index', compact(
-            'recettes', 
-            'sommeacte', 
-            'sommebudget', 
-            'totalrealisation',
+        // $depenses = DB::table('v_depense')->get();
+        // $sommedepense = DB::table('v_depense')->sum('montant_total');
+        // $sommebudgetdepense = DB::table('v_depense')->sum('budget');
+        // $totalrealisationdepense = ($sommedepense*100)/$sommebudgetdepense;
 
-            'depenses',
-            'sommedepense',
-            'sommebudgetdepense',
-            'totalrealisationdepense',
-
-            'beneficesomme',
-            'beneficebudget',
-            'benefice',
-        ));
+        // $beneficesomme = $sommeacte-$sommedepense;
+        // $beneficebudget = $sommebudget-$sommebudgetdepense;
+        // $benefice = ($totalrealisationdepense*100)/$totalrealisation;
     }
 
-    public function tableau(Request $request){
-        
+    public function tableau(Request $request)
+    {
+
         $mois = $request->mois;
         $annee = $request->annee;
 
         // recette
         $recettes = DB::table('v_recette')
-        ->select('*')
-        ->where('mois', '=', $mois)
-        ->where('annee', '=', $annee)->get();
+            ->select('*')
+            ->where('mois', '=', $mois)
+            ->where('annee', '=', $annee)->get();
         $sommeacte = DB::table('v_recette')
             ->where('mois', $mois)
             ->where('annee', $annee)
-            ->sum('montant_total');        
-        
+            ->sum('montant_total');
         $sommebudget = DB::table('v_recette')
             ->where('mois', $mois)
             ->where('annee', $annee)
             ->sum('budget');
-        $totalrealisation = ($sommeacte*100)/$sommebudget; 
-        
+        if ($sommebudget == 0) {
+            $sommebudget++;
+        } else {
+            $sommebudget;
+        }
+        $totalrealisation = ($sommeacte * 100) / $sommebudget;
+
         // depense
         $depenses = DB::table('v_depense')
-        ->select('*')
-        ->where('mois', '=', $mois)
-        ->where('annee', '=', $annee)->get();
+            ->select('*')
+            ->where('mois', '=', $mois)
+            ->where('annee', '=', $annee)->get();
         $sommedepense = DB::table('v_depense')
             ->where('mois', $mois)
             ->where('annee', $annee)
-            ->sum('montant_total'); 
+            ->sum('montant_total');
         $sommebudgetdepense = DB::table('v_depense')
             ->where('mois', $mois)
             ->where('annee', $annee)
-            ->sum('budget');         
-        $totalrealisationdepense = ($sommedepense*100)/$sommebudgetdepense;
+            ->sum('budget');
+        if ($sommebudgetdepense == 0) {
+            $sommebudgetdepense++;
+        } else {
+            $sommebudgetdepense;
+        }
+        $totalrealisationdepense = ($sommedepense * 100) / $sommebudgetdepense;
 
         // Benefice
-        $beneficesomme = $sommeacte-$sommedepense;
-        $beneficebudget = $sommebudget-$sommebudgetdepense;
-        $benefice = ($totalrealisationdepense*100)/$totalrealisation;
+        $beneficesomme = $sommeacte - $sommedepense;
+        $beneficebudget = $sommebudget - $sommebudgetdepense;
+        if ($totalrealisation == 0) {
+            $totalrealisation++;
+        } else {
+            $totalrealisation;
+        }
+        $benefice = ($totalrealisationdepense * 100) / $totalrealisation;
         // if(($sommebudget == 0) || () )
         // if($beneficesomme < 0){
         //     $beneficesomme = 1;
         // }else{$beneficesomme;}
 
-        if($benefice > 100)
-        {
+        if ($benefice > 100) {
             $benefice = 100;
-        }
-        else{
+        } else {
             $benefice = $benefice;
         }
-        if(($beneficesomme <0) || ($beneficebudget<=0)){
+        if (($beneficesomme < 0) || ($beneficebudget <= 0)) {
             $benefice = 0;
         }
-        
+
 
         return view('admin.dashboard.index', compact(
-            'recettes', 
-            'sommeacte', 
-            'sommebudget', 
+            'recettes',
+            'sommeacte',
+            'sommebudget',
             'totalrealisation',
 
             'depenses',

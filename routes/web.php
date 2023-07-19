@@ -77,6 +77,6 @@ function(){
 
     // Dashboard : 
     Route::resource('dashboard', DashboardController::class);
-    Route::get('tableau', [DashboardController::class, 'tableau'])->name('tableau');
+    Route::get('tableau', [DashboardController::class, 'tableau'])->name('dashboard.tableau');
 
 });
