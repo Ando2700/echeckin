@@ -52,7 +52,7 @@ use Carbon\carbon;
     <br/>
     <button class="btn btn-outline-primary" onclick="exportToPDF()">Exporter PDF</button>
     <div id="invoice">
-        <h3>Detail facture de :{{ $factures->patient->nom }}</h3>
+        <h4>Detail facture de :{{ $factures->patient->nom }}</h4>
                     <p>Facture du : <strong>{{ Carbon::parse($factures->date_facture)->format('d F Y') }}</strong></p>
         <table class="table">
             <thead>
@@ -76,7 +76,7 @@ use Carbon\carbon;
                 {{ $montant->montant_total }}
             @endforeach --}}
             @forelse ($montant as $montant)
-                <strong>{{ $montant->montant_total }} Ar</strong>
+                <h5>{{ $montant->montant_total }} Ar</h5>
             @empty
                 Aucune facture .
             @endforelse
