@@ -72,4 +72,5 @@ CREATE OR REPLACE VIEW v_saisie_depense AS
 SELECT ch.montant_depense, ch.date, d.type_depense, d.reference FROM 
 v_charge ch INNER JOIN depenses d
 ON ch.depense_id = d.id;
+
 select*from v_saisie_depense;

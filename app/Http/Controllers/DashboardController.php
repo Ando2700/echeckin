@@ -88,7 +88,7 @@ class DashboardController extends Controller
         $beneficesomme = $sommeacte-$sommedepense;
         $beneficebudget = $sommebudget-$sommebudgetdepense;
         $benefice = ($totalrealisationdepense*100)/$totalrealisation;
-
+        // if(($sommebudget == 0) || () )
         // if($beneficesomme < 0){
         //     $beneficesomme = 1;
         // }else{$beneficesomme;}
