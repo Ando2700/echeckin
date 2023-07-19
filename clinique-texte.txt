@@ -1,0 +1,28 @@
+Clinique: 
+
+Recette: 
+	Services: 
+		Type de service et tarif 
+			- consulation		30k/sceance
+			- operation			500k/operation
+			- medicament (medoc)		
+			- analyse			60k/h
+			- chambre			100k/nuit
+			
+		services : Creation de service : 
+			id	| 	type_service 	|	Tarif	|	date
+			1	|	Consultation 	|	
+			2	|	Operation
+			3	|	...				|	...
+			
+		medicaments(id, nommedoc, prix)
+		StockMedicament(id, medicament_id, nombre, date)
+
+Charges:
+	id		description			montant		date_depense
+	1 		loyer				200k		../../...
+	2		salaire				1M			../../...	
+	
+	achat_medicament:
+		id 		medicament_id(FK)	description		quantite	prix_unitaire	date_achat
+
