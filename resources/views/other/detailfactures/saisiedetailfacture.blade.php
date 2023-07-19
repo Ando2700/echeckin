@@ -52,7 +52,7 @@ use Carbon\carbon;
     <br/>
     <button class="btn btn-outline-primary" onclick="exportToPDF()">Exporter PDF</button>
     <div id="invoice">
-        <h2>Detail facture :</h2>
+        <h3>Detail facture de {{ $factures->patient->nom }}</h3>
                     <p>Facture du : <strong>{{ Carbon::parse($factures->date_facture)->format('d F Y') }}</strong></p>
         <table class="table">
             <thead>
