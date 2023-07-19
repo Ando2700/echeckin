@@ -56,8 +56,16 @@ class DashboardController extends Controller
         ->select('*')
         ->where('mois', '=', $mois)
         ->where('annee', '=', $annee)->get();
-        $sommeacte = DB::table('v_recette')->sum('montant_total');
-        $sommebudget = DB::table('v_recette')->sum('budget');
+        $sommeacte = DB::table('v_recette')
+            ->where('mois', $mois)
+            ->where('annee', $annee)
+            ->sum('montant_total');        
+        
+        $sommebudget = DB::table('v_recette')
+            ->where('mois', $mois)
+            ->where('annee', $annee)
+            ->sum('budget');
+        
         $totalrealisation = ($sommeacte*100)/$sommebudget; 
         
         // depense
@@ -65,8 +73,14 @@ class DashboardController extends Controller
         ->select('*')
         ->where('mois', '=', $mois)
         ->where('annee', '=', $annee)->get();
-        $sommedepense = DB::table('v_depense')->sum('montant_total');
-        $sommebudgetdepense = DB::table('v_depense')->sum('budget');
+        $sommedepense = DB::table('v_recette')
+            ->where('mois', $mois)
+            ->where('annee', $annee)
+            ->sum('montant_total'); 
+        $sommebudgetdepense = DB::table('v_recette')
+            ->where('mois', $mois)
+            ->where('annee', $annee)
+            ->sum('montant_total');         
         $totalrealisationdepense = ($sommedepense*100)/$sommebudgetdepense;
 
         $beneficesomme = $sommeacte-$sommedepense;
