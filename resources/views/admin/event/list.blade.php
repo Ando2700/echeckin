@@ -29,26 +29,27 @@
                                     @php
                                         use Illuminate\Support\Str;
                                     @endphp
-                                    <p><a href="{{ route('events.index') }}" class="btn btn-dark">Créer un événement</a></p>
-                                    {{-- <form action="{{ route('events.list') }}" method="GET" class="mb-3">
+                                    <p><a href="{{ route('events.index') }}" class="btn btn-dark" title="Créer un événement">Créer un événement</a></p>
+                                    <form action="{{ route('events.list') }}" method="GET" class="mb-3">
                                         <div class="input-group">
-                                            <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Rechercher le nom du lieu...">
-                                            <input type="text" name="address" class="form-control" placeholder="Adresse du lieu">
-                                            <input type="number" name="min_price" class="form-control" placeholder="Prix minimum">
-                                            <input type="number" name="max_price" class="form-control" placeholder="Prix maximum">
+                                            <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Rechercher un événement...">
+                                            <input type="datetime-local" name="datedebut" class="form-control" title="Sélectionnez la date de début (minimum)">
+                                            <input type="datetime-local" name="datefin" class="form-control" title="Sélectionnez la date de fin (maximum)">
+                                            <input type="text" name="place" value="{{ request('place') }}" class="form-control" placeholder="Rechercher un lieu...">
+                                            <input type="text" name="eventtype" value="{{ request('eventtype') }}" class="form-control" placeholder="Type d'événement...">
                                             <button type="submit" class="btn btn-dark" title="Rechercher">
                                                 <i class="fas fa-search"></i>
                                             </button>
-                                            @if (request('search') || request('min_price') || request('max_price') || request('address'))
+                                            @if (request('search') || request('place') || request('eventtype') || request('datedebut') || request('datefin'))
                                                 <a href="{{ route('events.list') }}" class="btn btn-light" title="Rafraîchir">
                                                     <i class="fa fa-refresh" aria-hidden="true"></i>
                                                 </a>
                                             @endif
                                         </div>
-                                    </form> --}}
+                                    </form>
                                     @if ($events->isEmpty())
                                         <div class="alert alert-danger" role="alert">
-                                            <p>Aucune correspondance trouvee</p>
+                                            <p>Aucune correspondance trouvée</p>
                                         </div>
                                     @endif
                                     <table class="table table-hover">

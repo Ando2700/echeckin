@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('meta_title', 'Echeck-in - Event Type - Create')
+@section('meta_title', 'Echeck-in - Event - Create')
 @section('content')
     <div class="site-section">
         <div class="container">

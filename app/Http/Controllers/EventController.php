@@ -25,13 +25,43 @@ class EventController extends Controller
     /**
      * Functio for listing events
      */
-    public function list()
+    public function list(Request $request)
     {
-        $events = DB::table('events')
+        $query = DB::table('events')
             ->join('places', 'events.place_id', '=', 'places.id')
             ->join('eventtypes', 'events.eventtype_id', '=', 'eventtypes.id')
-            ->select('events.id', 'events.eventname', 'events.datedebut', 'events.datefin', 'events.description', 'places.nomplace', 'eventtypes.eventtype')
-            ->paginate(5);
+            ->select('events.id', 'events.eventname', 'events.datedebut', 'events.datefin', 'events.description', 'places.nomplace', 'eventtypes.eventtype');
+
+        $search = $request->search;
+        $place = $request->place;
+        $eventtype = $request->eventtype;
+        $datedebut = $request->datedebut;
+        $datefin = $request->datefin;
+
+        if($search) {
+            $query->where('eventname', 'ilike', '%' . $search . '%');
+        }
+
+        if($place) {
+            $query->where('places.nomplace', 'ilike', '%' . $place . '%');
+        }
+
+        if($eventtype) {
+            $query->where('eventtypes.eventtype', 'ilike', '%' . $eventtype . '%');
+        }
+
+        if($datedebut) {
+            $datedebut = new \DateTime($datedebut);
+            $query->where('events.datedebut', '>=', $datedebut->format('Y-m-d H:i:s'));
+        }
+        
+        if($datefin) {
+            $datefin = new \DateTime($datefin);
+            $query->where('events.datefin', '<=', $datefin->format('Y-m-d H:i:s'));
+        }              
+
+        $events = $query->paginate(5);
+
         return view('admin.event.list', compact('events'));
     }
 
