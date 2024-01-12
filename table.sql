@@ -1,0 +1,7 @@
+image(id, path, place_id)
+places(id, nomplace, description, numberplace)
+attendees(id, firstname, lastname, email)
+eventtypes(id, event_type)
+invitations(id, event_id, attendee_id, QR_code, status)
+presences(id, date_presence, heure_presence, invitation_id)
+event(id, event_name, date_debut, date_fin, description, lieu_id)

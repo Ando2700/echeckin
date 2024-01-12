@@ -5,11 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EventTypeController;
 use App\Http\Controllers\ImportCsvController;
 use App\Http\Controllers\DetailFactureController;
 
@@ -28,55 +33,25 @@ use App\Http\Controllers\DetailFactureController;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
-// Route::middleware(['auth', 'redirect.admin'])->group(function () {
-//     Route::resource('admin', UserController::class);
-// });
-
-// Route::middleware(['auth', 'redirect.user'])->group(function () {
-
-// });
-
-
-// Route::resource('others', OtherController::class)->name('index', 'userhome');
-Route::resource('admin', AdminController::class);
-
-Route::resource('users', UserController::class);
-
+// Route::resource('admin', AdminController::class);
 Route::group(['middleware' => 'auth',
 ],
 function(){
-    // Gestion des utilisateurs
+    // Gestion de l'admin/accueil : 
     Route::resource('admin', AdminController::class);
-    Route::resource('users', UserController::class);
 
-    // Gestion des actes
-    Route::resource('patients', PatientController::class);
-    Route::resource('actes', ActeController::class);
-    
-    // Gestion des depenses
-    Route::resource('depenses', DepenseController::class);
-    
-    // Gestion de facture
-    Route::resource('factures', FactureController::class);
-    Route::get('saisiefacture/{id}', [FactureController::class, 'saisieFacture'])->name('saisiefacture');
-    Route::post('saveFacture', [FactureController::class, 'saveFacture'])->name('savefacture');
-    
-    // Gestion detail facture 
-    Route::resource('detailfactures', DetailFactureController::class);
-    Route::get('saisiedetailfacture/{id}', [DetailFactureController::class, 'saisiedetailfacture'])->name('saisiedetailfacture');
-    Route::post('saveDetailFacture', [DetailFactureController::class, 'saveDetailFacture'])->name('savedetailfacture');
+    // Gestions eventtypes : 
+    Route::resource('eventtypes', EventTypeController::class);
 
+    // Gestion images/places :
+    Route::get('places/list', [PlaceController::class, 'list'])->name('places.list');
+    Route::resource('places', PlaceController::class);
+    Route::resource('images', ImageController::class);
 
-    // Gestion des charges
-    Route::resource('charges', ChargeController::class);
+    // Gestion des participants :
+    Route::resource('attendees', AttendeeController::class);
 
-    // Import CSV :
-    Route::get('importCSV', [ImportCsvController::class, 'index'])->name('importindex');
-    Route::post('importCSV', [ImportCsvController::class, 'importCSV'])->name('import');
-
-    // Dashboard : 
-    Route::resource('dashboard', DashboardController::class);
-    Route::get('tableau', [DashboardController::class, 'tableau'])->name('dashboard.tableau');
-
+    // Gestion d'evenement : 
+    Route::get('events/list', [EventController::class, 'list'])->name('events.list');
+    Route::resource('events', EventController::class);
 });

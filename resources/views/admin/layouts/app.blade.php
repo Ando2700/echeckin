@@ -5,22 +5,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('meta_title', 'Home title')</title>
+    <link rel="icon" href="{{ asset('logo/e-checkin-logo.png') }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link rel="stylesheet" href="{{ asset('dt/datatables.min.css') }}">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    {{-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- Vendor --}}
+    {{-- <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet"> --}}
+    {{-- Vendor --}}
+
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
 
 <body class="sb-nav-fixed">
@@ -28,21 +48,16 @@
     use Carbon\carbon;
     ?>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="{{ route('admin.index') }}">Title here</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
-        <!-- Navbar-->
+        {{-- nisy an'ity class ity pour un peu d'espace navbar-brand ps-3 --}}
+        <a class="navbar-brand" href="{{ route('admin.index') }}" style="font-family: consolas"><img
+                src="{{ asset('logo/e-checkin-logo.png') }}" alt="E-checkin-logo" width="57px">E-Checkin Event
+        </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 
             </ul>
 
-            <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -79,96 +94,61 @@
         </div>
     </nav>
 
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="{{ route('patients.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Ajouter patient
-                        </a>
-                        <a class="nav-link" href="{{ route('actes.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Ajouter actes
-                        </a>
-                        <a class="nav-link" href="{{ route('depenses.index') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Ajouter depenses
-                        </a>
-                        <a class="nav-link" href="{{ route('dashboard.tableau') }}">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
-                        </a>
-
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Layouts
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                            </nav>
-                        </div>
-
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Pages
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                            </nav>
-                        </div>
-
-
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
-                    </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">e-Name:</div>
-                    Offcial website
-                </div>
-            </nav>
+    <aside class="sidebar">
+        <div class="toggle">
+            <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
         </div>
-        <div id="layoutSidenav_content">
-            <main>
-                {{-- @include('partials.navbar') --}}
-                @yield('content')
-            </main>
+        <div class="side-inner">
+
+            <div class="logo-wrap">
+                <div class="logo">
+                    <img src="{{ asset('img/event.png') }}" width="40px" alt="Echeki-in Event">
+                </div>
+                <span class="logo-text">Echeck-in Event</span>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="active" title="Page d'accueil"><a href="{{ route('admin.index') }}"
+                            class="d-flex align-items-center"><span class="wrap-icon icon-home2 mr-3"></span><span
+                                class="menu-text">Home</span></a></li>
+                    <li class="active" title="Creation de type d'événement"><a href="{{ route('eventtypes.index') }}"
+                            class="d-flex align-items-center"><span class="wrap-icon fa-solid fa-map mr-3"></span><span
+                                class="menu-text">Creation type événement</span></a>
+                    </li>
+                    <li class="active mb-2" title="Ajouter un lieu">
+                        <a href="{{ route('places.index') }}" class="d-flex align-items-center"><span
+                                class="wrap-icon fas fa-location-dot mr-3"></span><span class="menu-text">Ajouter un
+                                lieu</span></a>
+                    </li>
+                    <li class="active mb-2" title="Ajouter un/des participant(s)">
+                        <a href="{{ route('attendees.index') }}" class="d-flex align-items-center"><span
+                                class="wrap-icon fa-solid fa-user mr-3"></span><span class="menu-text">Ajouter
+                                participant(s)</span></a>
+                    </li>
+                    <li class="active mb-2" title="Creation d'événement">
+                        <a href="{{ route('events.index') }}" class="d-flex align-items-center"><span
+                                class="wrap-icon fas fa-calendar-check mr-3"></span><span class="menu-text">Creer un
+                                événement</span></a>
+                    </li>
+                    <li title="Statistiques"><a href="#" class="d-flex align-items-center"><span
+                                class="wrap-icon icon-pie-chart mr-3"></span><span
+                                class="menu-text">Statistiques</span></a></li><br>
+                    <li><a href="#" class="d-flex align-items-center"><span
+                                class="wrap-icon icon-cog mr-3"></span><span class="menu-text">Settings</span></a>
+                    </li><br>
+                </ul>
+            </div>
         </div>
-    </div>
+
+    </aside>
+    <main>
+        @yield('content')
+    </main>
 
     <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/datatables-demo.js') }}"></script>
     <script src="{{ asset('js/chart-pie-demo.js') }}"></script>
     <script src="{{ asset('js/chart-bar-demo.js') }}"></script>
@@ -176,6 +156,15 @@
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/alert.js') }}"></script>
     <script src="{{ asset('dt/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/owl.popper.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             $("#toggle").click(function() {
@@ -183,7 +172,6 @@
             })
         })
     </script>
-    @yield('js')
 </body>
 
 </html>
