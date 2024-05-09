@@ -4,7 +4,7 @@
     événementielle qui révolutionne la manière dont vous contrôlez et surveillez vos
     événements. En tant qu'administrateur, vous détenez les clés virtuelles de chaque
     rassemblement, avec une interface conviviale conçue pour simplifier chaque aspect de
-    la vérification des participants. <br><br>
+    la vérification des participants.
 
     Notre plateforme offre des fonctionnalités avancées pour vous permettre de gérer
     efficacement l'accès à vos événements. Créez facilement des codes QR uniques pour
