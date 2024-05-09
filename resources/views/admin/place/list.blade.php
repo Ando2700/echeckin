@@ -57,8 +57,8 @@
                                                 <th>Description</th>
                                                 <th>Nombre de places</th>
                                                 <th>Prix</th>
-                                                <th>Action</th>
-                                                <th>Action</th>
+                                                <th>Modifier</th>
+                                                <th>Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,16 +85,16 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ route('places.edit', $place->id) }}"
-                                                            class="btn btn-primary btn-sm">Modifier</a>
+                                                        <a title="Modifier - {{ $place->nomplace }}" href="{{ route('places.edit', $place->id) }}"
+                                                            class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></a>
                                                     </td>
                                                     <td>
                                                         <form action="{{ route('places.destroy', $place->id) }}"
                                                             method="POST" style="display:inline">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"
-                                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lieu ?')">Supprimer</button>
+                                                            <button title="Supprimer - {{ $place->nomplace }}" type="submit" class="btn btn-outline-danger btn-sm"
+                                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lieu ?')"><i class="fas fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

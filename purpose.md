@@ -1,4 +1,4 @@
-Thème: "Echek-in event"
+Thème: "Echekin event"
 
 Objectif: Rendre numérique le système d'invitation à chaque évènement (conférence, réunion, mariage, anniversaire, etc...) par l'intermédiaire de distribution
 d'invitations en version électronique pour les participants/invités.

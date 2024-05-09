@@ -4,7 +4,7 @@ I. EVENTTYPE + LOGO
    - Example : Anniversaire, concert, ...
 2. Modification event type
 3. Create a logo : 
-    - E-checkin Event
+    - Echeck-in Event
 
 II. PLACES
 1. Create a place
@@ -17,13 +17,20 @@ III. ATTENDEES
 
 IV. EVENTS
 1. Creation d'evenement
-2. Creation de view **v_event**(eventname, datedebut, datefin, description, nomplace, eventtype)
+2. Creation de view **v_event**(eventname, datedebut, datefin, description, nomplace, eventtype) (pas vraiment utile pour le moment)
+3. List des events
+4. Modification d'un evenement
+5. Suppression
+6. Ajout EVENTDETAILS (detail d'un evenement)
+
+V. EVENTDETAILS
+1. (Mbola vao migration sy ny vue an'ity no vita), a faire : creation de **table de liaison**
 
 ## DETAILS : 
 + Ajout de option [title] a chaque button ou de type **BTN** . 
-+ ~~Adding : 127.0.0.1       e-checkin-event.mah http://e-checkin-event.mah:8000~~
++ ~~Adding : 127.0.0.1       Echeck-in-event.mah http://Echeck-in-event.mah:8000~~
 + URL Rewriting 
-+ Font family pour E-Checkin Event au navbar : font-family: consolas
++ Font family pour Echeck-in Event au navbar : font-family: consolas
 + Font family pour body et le titre et sous-titre: Verdana, Geneva, sans-serif
 
 ### Controller + Class + Table + Migration

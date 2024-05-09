@@ -16,6 +16,8 @@ use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventTypeController;
 use App\Http\Controllers\ImportCsvController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\EventDetailController;
 use App\Http\Controllers\DetailFactureController;
 
 /*
@@ -54,4 +56,12 @@ function(){
     // Gestion d'evenement : 
     Route::get('events/list', [EventController::class, 'list'])->name('events.list');
     Route::resource('events', EventController::class);
+
+    // Gestion des details d'evenement : 
+    Route::get('eventdetails/detail/{id}', [EventDetailController::class, 'detail'])->name('eventdetails.detail');
+    Route::get('eventdetails/list', [EventDetailController::class, 'list'])->name('eventdetails.list');
+    Route::resource('eventdetails', EventDetailController::class);
+
+    // Gestion des statistiques
+    Route::resource('statistics', StatisticController::class);
 });

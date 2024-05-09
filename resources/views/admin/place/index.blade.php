@@ -98,7 +98,9 @@
                                             @enderror
                                         </div>
 
-                                        <input type="submit" class="btn btn-primary" value="Ajouter" title="Ajouter">
+                                        <button type="submit" class="btn btn-primary" title="Enregistrer">
+                                            <i class="fa-solid fa-floppy-disk"></i> Enregitrer
+                                        </button>
                                         <input type="reset" class="btn btn-warning" value="Reset" title="Reset">
                                     </form>
                                 </div>

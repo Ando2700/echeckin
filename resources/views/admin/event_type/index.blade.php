@@ -31,7 +31,9 @@
                                             @enderror
                                         </div>
 
-                                        <input type="submit" class="btn btn-primary" value="Ajouter" title="Ajouter">
+                                        <button type="submit" class="btn btn-primary" title="Enregistrer">
+                                            <i class="fa-solid fa-floppy-disk"></i> Enregitrer
+                                        </button>                                          
                                         <input type="reset" class="btn btn-warning" value="Reset" title="Reset">
                                         @if (Session::has('success'))
                                             <div class="alert alert-success">
@@ -46,7 +48,7 @@
                                     </form>
 
                                     <br>
-
+                                    {{-- LIST --}}
                                     <h3>Liste des types d'événement: </h3>
                                     <form action="{{ route('eventtypes.index') }}" method="GET" class="mb-3">
                                         <div class="input-group">
@@ -71,15 +73,15 @@
                                         <thead>
                                             <tr>
                                                 <th>Type d'événement</th>
-                                                <th>Action</th>
-                                                <th>Action</th>
+                                                <th>Modifier</th>
+                                                <th>Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($eventtypes as $eventtype)
                                                 <tr>
                                                     <td>{{ $eventtype->eventtype }}</td>
-                                                    <td><a class="btn btn-primary btn-sm" href="{{ route('eventtypes.edit', $eventtype->id) }}" title="Modifier - {{ $eventtype->eventtype }}">Modifier</a></td>
+                                                    <td><a class="btn btn-outline-primary btn-sm" href="{{ route('eventtypes.edit', $eventtype->id) }}" title="Modifier - {{ $eventtype->eventtype }}"><i class="fas fa-pen"></i></a></td>
                                                     <td>
                                                         <form onsubmit="return confirm('Etes vous sur ?');"
                                                             action="{{ route('eventtypes.destroy', $eventtype->id) }}"
@@ -88,8 +90,8 @@
                                                             @method('DELETE')
                                                             <button 
                                                                 type="submit"
-                                                                class="btn btn-sm btn-danger"
-                                                                title="Supprimer - {{ $eventtype->eventtype }}">Supprimer</button>
+                                                                class="btn btn-sm btn-outline-danger"
+                                                                title="Supprimer - {{ $eventtype->eventtype }}"><i class="fas fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

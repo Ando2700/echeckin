@@ -1,0 +1,28 @@
+Partie web :
+Gestion Login : 
+	- Login et inscription
+Gestion de type d'evenement : 1 jour
+	- Ajout de type d'evenement
+	- Liste des type d'evenement
+	- Modification de type d'evenement
+	- Suppression
+	
+Gestion de lieu d'evenement : 4 jours
+	- Creation d'un lieu d'evenement avec image(ou plusieurs)
+	- Liste des lieux + recherche par lieu/adresse/prix mine et 
+	prix max + pagination
+	- Liste detaillee des lieux + image en caroussel
+	- Modification et suppression des lieux 
+	
+Gestion de participant/invité : (pour l'admin) 1 Jour
+	- CRUD
+	
+Gestion d'evenement : 4 jours
+	- Creation d'evenement
+	- Liste des evenements et recherche avancee des evenements
+	- Modification et suppression d'evenement
+
+Gestion d'envoi de mail et attribution des QR Codes pour chaque 
+invité/participant : 6 jours
+	- Selection d'un ou de plusieurs participant/invité
+	- Envoi de mail et attribution des QR Code via mail

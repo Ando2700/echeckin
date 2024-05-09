@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('meta_title', 'Home title')</title>
-    <link rel="icon" href="{{ asset('logo/e-checkin-logo.png') }}">
+    <link rel="icon" href="{{ asset('logo/echeckin.jpg') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
@@ -50,7 +50,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         {{-- nisy an'ity class ity pour un peu d'espace navbar-brand ps-3 --}}
         <a class="navbar-brand" href="{{ route('admin.index') }}" style="font-family: consolas"><img
-                src="{{ asset('logo/e-checkin-logo.png') }}" alt="E-checkin-logo" width="57px">E-Checkin Event
+                src="{{ asset('logo/echeckin.jpg') }}" alt="Echeck-in-logo" width="56px">Echeck-in Event
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
@@ -110,9 +110,10 @@
             </div>
             <div class="nav-menu">
                 <ul>
-                    <li class="active" title="Page d'accueil"><a href="{{ route('admin.index') }}"
-                            class="d-flex align-items-center"><span class="wrap-icon icon-home2 mr-3"></span><span
-                                class="menu-text">Home</span></a></li>
+                    <li class="active mb-2" title="Page d'accueil">
+                        <a href="{{ route('admin.index') }}" class="d-flex align-items-center"><span
+                                class="wrap-icon fas fa-home mr-3"></span><span class="menu-text">Home</span></a>
+                    </li>
                     <li class="active" title="Creation de type d'événement"><a href="{{ route('eventtypes.index') }}"
                             class="d-flex align-items-center"><span class="wrap-icon fa-solid fa-map mr-3"></span><span
                                 class="menu-text">Creation type événement</span></a>
@@ -132,12 +133,10 @@
                                 class="wrap-icon fas fa-calendar-check mr-3"></span><span class="menu-text">Creer un
                                 événement</span></a>
                     </li>
-                    <li title="Statistiques"><a href="#" class="d-flex align-items-center"><span
-                                class="wrap-icon icon-pie-chart mr-3"></span><span
-                                class="menu-text">Statistiques</span></a></li><br>
-                    <li><a href="#" class="d-flex align-items-center"><span
-                                class="wrap-icon icon-cog mr-3"></span><span class="menu-text">Settings</span></a>
-                    </li><br>
+                    <li class="active mb-2" title="Statistiques">
+                        <a href="{{ route('statistics.index') }}" class="d-flex align-items-center"><span
+                                class="wrap-icon fas fa-chart-bar mr-3"></span><span class="menu-text">Statistiques</span></a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -59,7 +59,9 @@
                                             @enderror
                                         </div>
 
-                                        <input type="submit" class="btn btn-primary" value="Ajouter" title="Ajouter">
+                                        <button type="submit" class="btn btn-primary" title="Enregistrer">
+                                            <i class="fa-solid fa-floppy-disk"></i> Enregitrer
+                                        </button>
                                         <input type="reset" class="btn btn-warning" value="Reset" title="Reset">
                                         @if (Session::has('success'))
                                             <div class="alert alert-success">
@@ -110,8 +112,8 @@
                                                 <th>Nom</th>
                                                 <th>Prenom</th>
                                                 <th>Email</th>
-                                                <th>Action</th>
-                                                <th>Action</th>
+                                                <th>Modifier</th>
+                                                <th>Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -120,7 +122,7 @@
                                                     <td>{{ $attendee->firstname }}</td>
                                                     <td>{{ $attendee->lastname }}</td>
                                                     <td>{{ $attendee->email }}</td>
-                                                    <td><a class="btn btn-primary btn-sm" href="{{ route('attendees.edit', $attendee->id) }}" title="Modifier - {{ $attendee->firstname }}">Modifier</a></td>
+                                                    <td><a class="btn btn-outline-primary btn-sm" href="{{ route('attendees.edit', $attendee->id) }}" title="Modifier - {{ $attendee->firstname }}"><i class="fas fa-pen"></i></a></td>
                                                     <td>
                                                         <form onsubmit="return confirm('Etes vous sur ?');"
                                                             action="{{ route('attendees.destroy', $attendee->id) }}"
@@ -129,8 +131,8 @@
                                                             @method('DELETE')
                                                             <button 
                                                                 type="submit"
-                                                                class="btn btn-sm btn-danger"
-                                                                title="Supprimer - {{ $attendee->firstname }}">Supprimer</button>
+                                                                class="btn btn-sm btn-outline-danger"
+                                                                title="Supprimer - {{ $attendee->firstname }}"><i class="fas fa-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>

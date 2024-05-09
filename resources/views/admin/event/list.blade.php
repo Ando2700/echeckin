@@ -14,7 +14,7 @@
                                     use Carbon\Carbon;
                                     ?>
                                     {{-- Liste des evenements --}}
-                                    <h1>List des lieux : </h1>
+                                    <h1>Liste des événements : </h1>
                                     <hr>
                                     @if (Session::has('success'))
                                         <div class="alert alert-success">
@@ -61,6 +61,9 @@
                                                 <th>Description</th>
                                                 <th>Nom du lieu</th>
                                                 <th>Type d'événement</th>
+                                                <th>Detail événement</th>
+                                                <th>Modifier</th>
+                                                <th>Supprimer</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -76,6 +79,23 @@
                                                     </td>
                                                     <td>{{ $event->nomplace }}</td>
                                                     <td>{{ $event->eventtype }}</td>
+                                                    <td><a title="Detail evenement-{{ $event->eventname }}" href="{{ route('eventdetails.detail', $event->id) }}" class="btn btn-success btn-sm">Ajouter les details</a></td>
+                                                    <td>
+                                                        <a title="Modifier - {{ $event->eventname }}" href="{{ route('events.edit', $event->id) }}"
+                                                            class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></a>
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{ route('events.destroy', $event->id) }}"
+                                                            method="POST" style="display:inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button 
+                                                                title="Supprimer - {{ $event->eventname }}" 
+                                                                type="submit" 
+                                                                class="btn btn-outline-danger btn-sm"
+                                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce lieu ?')"><i class="fas fa-trash"></i></button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

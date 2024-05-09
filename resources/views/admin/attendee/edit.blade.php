@@ -58,9 +58,9 @@
                                             @enderror
                                         </div>
 
-                                        <input type="submit" class="btn btn-primary" value="Ajouter" title="Ajouter">
+                                        <input type="submit" class="btn btn-primary" value="Modifier" title="Modifier">
                                         <a href="{{ route('attendees.index') }}" class="btn btn-outline-dark"><i
-                                            class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                                            class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a>
                                     </form>                                
                                     {{-- END --}}
                                 </div>
