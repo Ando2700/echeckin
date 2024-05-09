@@ -75,7 +75,7 @@ class EventDetailController extends Controller
         try {
             $rules = [
                 'event_id' => 'required',
-                'additional_information' => 'string|nullable',
+                // 'additional_information' => 'string|nullable',
                 'attendee_id' => 'required'
             ];
             $messages = [
@@ -84,10 +84,10 @@ class EventDetailController extends Controller
 
             $request->validate($rules, $messages);
 
-            $eventdetail = new Eventdetail();
-            $eventdetail->event_id = $request->event_id;
-            $eventdetail->additional_information = $request->additional_information;
-            $eventdetail->save();
+            // $eventdetail = new Eventdetail();
+            // $eventdetail->event_id = $request->event_id;
+            // $eventdetail->additional_information = $request->additional_information;
+            // $eventdetail->save();
 
             $attendeeIds = explode(',', $request->attendee_id);
 

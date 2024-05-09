@@ -11,7 +11,7 @@
                                 <div class="post-content">
                                     {{-- START --}}
 
-                                    <h1>Ajout de détails à l'événement : {{ $event->eventname }}</h1>
+                                    <h1>Mail & QR Code : {{ $event->eventname }}</h1>
                                     <hr>
                                     <a href="{{ route('eventdetails.list') }}" class="btn btn-dark"
                                         title="Liste des événements avec details">Liste des qr code</a>
@@ -44,7 +44,7 @@
                                         </div>
                                         <span id="countAttendees">0</span> participants sélectionnés.
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="font-weight-bold">Information supplémentaire : (Si besoin)</label>
                                             <textarea class="form-control @error('additional_information') is-invalid @enderror" name="additional_information"
                                                 rows="5"></textarea>
@@ -54,8 +54,8 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
-                                        </div>
-
+                                        </div> --}}
+                                        <br><br>
                                         <button type="submit" class="btn btn-primary" title="Enregistrer et envoyer">
                                             <i class="fa-solid fa-envelope"></i> Enregistrer et envoyer
                                         </button>

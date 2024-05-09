@@ -107,7 +107,7 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                @if (!empty($presenceHeure[$statistique->id]))
+                                                                @if (!empty($presenceHeure[$statistique->id]) && $statistique->nombre_de_presences !=0)
                                                                     <canvas id="myChart{{ $loop->index }}"
                                                                         style="width:100%;max-width:600px"></canvas>
                                                                 @else
