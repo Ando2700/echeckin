@@ -1,6 +1,7 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p>Bienvenue dans l'espace administrateur de Echeck-in Event - l'outil de gestion
+<p>
+    Bienvenue dans l'espace administrateur de Echeck-in Event - l'outil de gestion
     événementielle qui révolutionne la manière dont vous contrôlez et surveillez vos
     événements. En tant qu'administrateur, vous détenez les clés virtuelles de chaque
     rassemblement, avec une interface conviviale conçue pour simplifier chaque aspect de
