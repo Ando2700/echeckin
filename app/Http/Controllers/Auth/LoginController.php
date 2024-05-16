@@ -44,6 +44,6 @@ class LoginController extends Controller
         if($user->name=="admin") {
             return redirect()->route('admin.index');
         }
-        return redirect()->route('admin.index');
+        return redirect()->route('guests.index');
     }
 }

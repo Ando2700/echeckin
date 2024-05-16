@@ -6,6 +6,7 @@ use App\Http\Controllers\ActeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\ChargeController;
@@ -64,4 +65,6 @@ function(){
 
     // Gestion des statistiques
     Route::resource('statistics', StatisticController::class);
+
+    Route::resource('guests', GuestController::class);
 });

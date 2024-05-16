@@ -11,7 +11,7 @@
                                 <div class="post-content">
                                     {{-- START --}}
 
-                                    <h1>Mail & QR Code : {{ $event->eventname }}</h1>
+                                    <h1>Envoi d'email & QR Code : {{ $event->eventname }}</h1>
                                     <hr>
                                     <a href="{{ route('eventdetails.list') }}" class="btn btn-dark"
                                         title="Liste des événements avec details">Liste des qr code</a>

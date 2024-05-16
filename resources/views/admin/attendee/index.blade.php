@@ -78,7 +78,7 @@
                                     <br>
 
                                     {{--List des participants--}}
-                                    <h3>Liste des participants: {{ $attendees->count() }}</h3>
+                                    <h3>Liste des participants: ({{ $totalAttendees }})</h3>
                                     <form action="{{ route('attendees.index') }}" method="GET" class="mb-3">
                                         <div class="input-group">
                                             <input type="text" name="firstname" class="form-control"

@@ -11,7 +11,7 @@
                                 <div class="post-content">
                                     <h1>Introduction</h1>
                                     <p>Bienvenue dans l'espace administrateur de Echeck-in Event - l'outil de gestion
-                                        événementielle qui révolutionne la manière dont vous contrôlez et surveillez vos
+                                        événementielle qui révolutionne la manière dont vous contrôlez et surveillez tous les 
                                         événements. En tant qu'administrateur, vous détenez les clés virtuelles de chaque
                                         rassemblement, avec une interface conviviale conçue pour simplifier chaque aspect de
                                         la vérification des participants. <br><br>

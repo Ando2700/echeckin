@@ -83,13 +83,17 @@ class EventController extends Controller
             $rules = [
                 'eventname' => 'required|string|max:255',
                 'datedebut' => 'required|date|after_or_equal:now',
-                'datefin' => 'required|date|after_or_equal:datedebut',
+                'datefin' => 'required|date|after:datedebut',
                 'description' => 'required|string',
                 'place_id' => 'required|exists:places,id',
                 'eventtype_id' => 'required|exists:eventtypes,id',
             ];
             $messages = [
+                'eventname.required'=> 'Le nom de l\'évènement est requis',
+                'datedebut.required'=> 'Le champ de date de debut est requis',
+                'datefin.required'=> 'Le champ de date fin est requis',
                 'datedebut.after_or_equal' => 'La date de début doit être égale ou postérieure à la date actuelle.',
+                'datefin.after' => 'La date de fin doit être postérieure à la date de début.',
             ];
 
             $request->validate($rules, $messages);
@@ -178,7 +182,11 @@ class EventController extends Controller
                 'eventtype_id' => 'required|exists:eventtypes,id',
             ];
             $messages = [
+                'eventname.required'=> 'Le nom de l\'évènement est requis',
+                'datedebut.required'=> 'Le champ de date de debut est requis',
+                'datefin.required'=> 'Le champ de date fin est requis',
                 'datedebut.after_or_equal' => 'La date de début doit être égale ou postérieure à la date actuelle.',
+                'datefin.after' => 'La date de fin doit être postérieure à la date de début.',
             ];
 
             $request->validate($rules, $messages);

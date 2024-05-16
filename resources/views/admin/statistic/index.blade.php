@@ -130,7 +130,7 @@
                                             const yValues{{ $index }} = @json(array_values($presenceHeure[$statistique->id]));
 
                                             new Chart("myChart{{ $index }}", {
-                                                type: "line",
+                                                type: "bar",
                                                 data: {
                                                     labels: xValues{{ $index }},
                                                     datasets: [{

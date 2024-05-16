@@ -31,9 +31,11 @@ class AttendeeController extends Controller
             $query->where('email', 'ilike', '%' . $email . '%');
         }
 
-        $attendees = $query->paginate(3);
+        $totalAttendees = $query->count();
 
-        return view('admin.attendee.index', compact('attendees'));
+        $attendees = $query->paginate(5);
+
+        return view('admin.attendee.index', compact('attendees', 'totalAttendees'));
     }
 
     /**
